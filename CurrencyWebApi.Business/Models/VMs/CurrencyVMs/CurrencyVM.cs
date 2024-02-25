@@ -12,6 +12,6 @@ namespace CurrencyWebApi.Business.Models.VMs.CurrencyVMs
 
         public string? Name { get; set; }
 
-        public string? AtributeName { get; set; }
+        public string? AttributeName { get; set; }
     }
 }

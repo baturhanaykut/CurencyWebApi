@@ -33,7 +33,7 @@ namespace CurrencyWebApi.Business.Services.CurrencyService
             Currency currency = await _currencyRepository.GetDefault(x => x.Id == id);
             if (currency is not null)
             {
-                await _currencyRepository.Add(currency);
+                await _currencyRepository.Delete(currency);
             }
         }
 
@@ -55,5 +55,7 @@ namespace CurrencyWebApi.Business.Services.CurrencyService
             Currency currency = _mapper.Map<Currency>(updateCurrenycDto);
             await _currencyRepository.Update(currency);
         }
+
+
     }
 }

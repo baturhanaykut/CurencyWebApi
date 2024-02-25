@@ -17,7 +17,7 @@ namespace CurrencyWebApi.Infrastructre.EntitiesConfiguration
                 .HasColumnOrder(2)
                 .HasColumnType("VARCHAR(20)");
 
-            builder.Property(x => x.AtributeName)
+            builder.Property(x => x.AttributeName)
                 .IsRequired(true)
                 .HasColumnOrder(3)
                 .HasColumnType("VARCHAR(20)");
