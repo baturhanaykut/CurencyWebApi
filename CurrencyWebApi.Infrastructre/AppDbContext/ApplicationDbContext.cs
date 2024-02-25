@@ -2,7 +2,7 @@
 using CurrencyWebApi.Infrastructre.EntitiesConfiguration;
 using Microsoft.EntityFrameworkCore;
 
-namespace CurrencyWebApi.Infrastructre.ApplicationDbContext
+namespace CurrencyWebApi.Infrastructre.AppDbContext
 {
     public class ApplicationDbContext : DbContext
     {
