@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyWebApi.Domain", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyWebApi.Infrastructre", "CurrencyWebApi.Infrastructre\CurrencyWebApi.Infrastructre.csproj", "{79001D0D-9915-4B5C-8C3B-3C2548F1669E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyWebApi.Business", "CurrencyWebApi.Business\CurrencyWebApi.Business.csproj", "{9807D656-8892-46E3-BCC2-3F2E82FC68F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{79001D0D-9915-4B5C-8C3B-3C2548F1669E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79001D0D-9915-4B5C-8C3B-3C2548F1669E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79001D0D-9915-4B5C-8C3B-3C2548F1669E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9807D656-8892-46E3-BCC2-3F2E82FC68F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9807D656-8892-46E3-BCC2-3F2E82FC68F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9807D656-8892-46E3-BCC2-3F2E82FC68F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9807D656-8892-46E3-BCC2-3F2E82FC68F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
