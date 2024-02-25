@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CurrencyWebApi.Domain.Entities
 {
-    public class CurrenyDetail
+    public class CurrencyDetail
     {
         public int CurrenyId { get; set; }
 
@@ -14,6 +14,6 @@ namespace CurrencyWebApi.Domain.Entities
 
         public string? Value { get; set; }
 
-        public List<Currency>? Currencies { get; set; }
+        public Currency Currency { get; set; }
     }
 }

@@ -7,5 +7,7 @@
         public string? Name { get; set; }
 
         public string? AtributeName { get; set; }
+
+        public List<CurrencyDetail> CurrencyDetails { get; set; }
     }
 }
