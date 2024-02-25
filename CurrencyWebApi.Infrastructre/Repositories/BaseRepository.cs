@@ -31,6 +31,7 @@ namespace CurrencyWebApi.Infrastructre.Repositories
 
         public async Task<bool> Delete(TEntity entity)
         {
+            _table.Remove(entity);
             return await Save() > 0;
         }
 

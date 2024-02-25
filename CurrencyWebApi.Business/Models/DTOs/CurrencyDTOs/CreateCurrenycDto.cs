@@ -11,5 +11,6 @@ namespace CurrencyWebApi.Business.Models.DTOs.CurrencyDTOs
         public  string? Name{ get; set; }
 
         public string? AttributeName { get; set; }
+        
     }
 }
