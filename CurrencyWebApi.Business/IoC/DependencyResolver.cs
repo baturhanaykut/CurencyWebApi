@@ -7,7 +7,7 @@ using CurrencyWebApi.Infrastructre.Repositories;
 
 namespace CurrencyWebApi.Business.IoC
 {
-    public class DependecyResolver : Module
+    public class DependencyResolver : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
