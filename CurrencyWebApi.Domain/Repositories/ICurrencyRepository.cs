@@ -2,7 +2,7 @@
 
 namespace CurrencyWebApi.Domain.Repositories
 {
-    internal interface ICurrencyRepository : IBaseRepository<Currency>
+    public interface ICurrencyRepository : IBaseRepository<Currency>
     {
     }
 }
