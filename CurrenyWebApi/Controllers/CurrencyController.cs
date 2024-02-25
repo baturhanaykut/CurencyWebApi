@@ -29,6 +29,7 @@ namespace CurrenyWebApi.Controllers
             var values = await _currencyService.GetById(id);
             return Ok(values);
         }
+
         [HttpPost]
         public async Task<IActionResult> AddCurrency(CreateCurrenycDto createCurrenycDto)
         {

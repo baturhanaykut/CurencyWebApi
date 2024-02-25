@@ -24,6 +24,12 @@ namespace CurrencyWebApi.Infrastructre.Repositories
             return await Save() > 0;
         }
 
+        public async Task<bool> AddRange(List<TEntity> entities)
+        {
+            await _table.AddRangeAsync(entities);
+            return await Save() > 0;
+        }
+
         public async Task<bool> Any(Expression<Func<TEntity, bool>> expression)
         {
             return await _table.AnyAsync(expression);
