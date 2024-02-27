@@ -22,7 +22,7 @@ namespace CurrenyWebApi.Controllers
             return Ok();
         }
 
-        [HttpGet(" GetLastValueOfCurrencies")]
+        [HttpGet("GetLastValueOfCurrencies")]
         public async Task<IActionResult> GetLastValueOfCurrencies()
         {
             var values = await _currencyDetailsService.GetLastValue();

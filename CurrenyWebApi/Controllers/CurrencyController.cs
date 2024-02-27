@@ -23,7 +23,7 @@ namespace CurrenyWebApi.Controllers
             return Ok(values);
         }
 
-        [HttpGet("GetCurrencyById")]
+        [HttpGet("GetCurrencyById/{id}")]
         public async Task<IActionResult> GetCurrencyById(int id)
         {
             var values = await _currencyService.GetById(id);
