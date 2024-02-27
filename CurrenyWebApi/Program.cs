@@ -4,8 +4,31 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using CurrencyWebApi.Business.IoC;
 using CurrencyWebApi.Infrastructre.AppDbContext;
+using Quartz;
+using CurrenyWebApi.Jobs;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Quartz 
+//builder.Services.AddQuartz(q =>
+//{
+//    q.UseMicrosoftDependencyInjectionJobFactory();
+//    // Just use the name of your job that you created in the Jobs folder.
+//    var jobKey = new JobKey("GetCurrencyValue");
+//    q.AddJob<GetCurrencyValue>(opts => opts.WithIdentity(jobKey));
+
+//    q.AddTrigger(opts => opts
+//        .ForJob(jobKey)
+//        .WithIdentity("GetCurrencyValue-trigger")
+//        //This Cron interval can be described as "run every minute" (when second is zero)
+//        //.WithCronSchedule("0 0/1 * * * ?")
+//        .WithSimpleSchedule(schedule => schedule.WithIntervalInSeconds(5).RepeatForever())
+//    );
+//});
+//builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+#endregion
+builder.Services.AddQuartzDependency();
 
 // Add services to the container.
 
@@ -22,6 +45,10 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 {
     builder.RegisterModule(new DependencyResolver());
 }); // Dependency injection için kullanýlan container burada implimente edildi.
+
+
+
+
 
 var app = builder.Build();
 
