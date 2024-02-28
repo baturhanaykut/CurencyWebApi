@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using CurrencyWebApi.Business.Hubs;
 using CurrencyWebApi.Business.Models.VMs.CurrencyDetailVMs;
 using CurrencyWebApi.Business.Models.VMs.CurrencyVMs;
 using CurrencyWebApi.Business.Services.CurrencyService;
 using CurrencyWebApi.Domain.Entities;
 using CurrencyWebApi.Domain.Repositories;
 using HtmlAgilityPack;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyWebApi.Business.Services.CurrencyDetailsService
@@ -14,13 +16,16 @@ namespace CurrencyWebApi.Business.Services.CurrencyDetailsService
         private readonly IMapper _mapper;
         private readonly ICurrencyDetailRepositroy _currencyDetailRepositroy;
         private readonly ICurrencyService _currencyService;
+        private readonly IHubContext<CurrencyHub> _hubContext;
 
 
-        public CurrencyDetailsService(IMapper mapper, ICurrencyDetailRepositroy currencyDetailRepositroy, ICurrencyService currencyService)
+
+        public CurrencyDetailsService(IMapper mapper, ICurrencyDetailRepositroy currencyDetailRepositroy, ICurrencyService currencyService, IHubContext<CurrencyHub> hubContext)
         {
             _mapper = mapper;
             _currencyDetailRepositroy = currencyDetailRepositroy;
             _currencyService = currencyService;
+            _hubContext = hubContext;
         }
 
         public async Task Create()
@@ -43,6 +48,7 @@ namespace CurrencyWebApi.Business.Services.CurrencyDetailsService
             }
 
             await _currencyDetailRepositroy.AddRange(currencyDetails);
+            await _hubContext.Clients.All.SendAsync("CurrentCurrencyValue", await GetLastValue());
         }
 
         public async Task<CurrencyDetailVM> GetLastValue(int currencyId)

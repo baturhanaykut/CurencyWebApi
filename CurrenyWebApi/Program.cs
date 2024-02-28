@@ -1,11 +1,10 @@
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Autofac.Extensions.DependencyInjection;
+using CurrencyWebApi.Business.Hubs;
 using CurrencyWebApi.Business.IoC;
 using CurrencyWebApi.Infrastructre.AppDbContext;
+using Microsoft.EntityFrameworkCore;
 using Quartz;
-using CurrenyWebApi.Jobs;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +28,7 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 #endregion
 builder.Services.AddQuartzDependency();
+builder.Services.AddSignalR();
 
 // Add services to the container.
 
@@ -48,6 +48,15 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 
 
 
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+    builder =>
+    {
+        builder
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed((host) => true)
+        .AllowCredentials();
+    }));
 
 
 var app = builder.Build();
@@ -62,6 +71,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("CorsPolicy");
+app.MapHub<CurrencyHub>("/currencyHub");
 
 app.MapControllers();
 
